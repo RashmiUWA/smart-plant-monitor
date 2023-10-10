@@ -1,5 +1,6 @@
 package com.smart.plant.monitor.controller;
 
+import com.smart.plant.monitor.dto.UserDto;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.CrossOrigin;
@@ -85,5 +86,12 @@ public class SPMController {
     dummy.setLightStrength(245f);
     dummy.setSoilMoisture(10f);
     return sensorDataService.save(dummy);
+  }
+
+
+  @GetMapping("/userData/{id}")
+  @ResponseStatus(HttpStatus.OK)
+  public Mono<UserDto> getPlantStatusForUser(@PathVariable("id") Integer id) {
+    return sensorDataService.getPlantStatusForUser(id);
   }
 }

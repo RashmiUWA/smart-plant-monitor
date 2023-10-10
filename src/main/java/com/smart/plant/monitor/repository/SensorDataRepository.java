@@ -7,8 +7,12 @@ import com.smart.plant.monitor.model.SensorData;
 
 import reactor.core.publisher.Flux;
 
+import java.util.Date;
+
 @Repository
 public interface SensorDataRepository extends ReactiveMongoRepository<SensorData, String> {
   Flux<SensorData> findByPublished(boolean published);
+
+  Flux<SensorData> findByDeviceIdAndTimestampAfter(String deviceId, Date timestamp);
 
 }
