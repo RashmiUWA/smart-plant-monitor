@@ -46,6 +46,7 @@ public class SPMController {
   @PostMapping("/data")
   @ResponseStatus(HttpStatus.CREATED)
   public Mono<SensorData> createSensorData(@RequestBody SensorData sensorData) {
+    sensorData.setTimestamp(new Date());
     return sensorDataService.save(sensorData);
   }
 
