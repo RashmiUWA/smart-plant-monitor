@@ -6,6 +6,7 @@ import org.springframework.stereotype.Repository;
 import com.smart.plant.monitor.model.SensorData;
 
 import reactor.core.publisher.Flux;
+import reactor.core.publisher.Mono;
 
 import java.util.Date;
 
@@ -14,5 +15,7 @@ public interface SensorDataRepository extends ReactiveMongoRepository<SensorData
   Flux<SensorData> findByPublished(boolean published);
 
   Flux<SensorData> findByDeviceIdAndTimestampAfter(String deviceId, Date timestamp);
+
+  Mono<SensorData> findTopByOrderByIdDesc();
 
 }

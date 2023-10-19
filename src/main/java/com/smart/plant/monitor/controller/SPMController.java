@@ -47,6 +47,7 @@ public class SPMController {
   @ResponseStatus(HttpStatus.CREATED)
   public Mono<SensorData> createSensorData(@RequestBody SensorData sensorData) {
     sensorData.setTimestamp(new Date());
+    System.out.println(sensorData);
     return sensorDataService.save(sensorData);
   }
 
@@ -93,6 +94,15 @@ public class SPMController {
   @GetMapping("/userData/{id}")
   @ResponseStatus(HttpStatus.OK)
   public Mono<UserDto> getPlantStatusForUser(@PathVariable("id") Integer id) {
+    System.out.println("Data requested avg");
     return sensorDataService.getPlantStatusForUser(id);
   }
+
+  @GetMapping("/lastDeviceData/{id}")
+  @ResponseStatus(HttpStatus.OK)
+  public Mono<UserDto> getPlantStatusForDevice(@PathVariable("id") String id) {
+    System.out.println("Data requested current");
+    return sensorDataService.getPlantStatusForDevice(id);
+  }
+
 }

@@ -105,19 +105,6 @@ public class SensorData {
   }
 
   @Override
-  public String toString() {
-    return "SensorData{" +
-            "id='" + id + '\'' +
-            ", timestamp=" + timestamp +
-            ", temperature=" + temperature +
-            ", humidity=" + humidity +
-            ", lightStrength=" + lightStrength +
-            ", soilMoisture=" + soilMoisture +
-            ", published=" + published +
-            '}';
-  }
-
-  @Override
   public boolean equals(Object o) {
     if (this == o) return true;
     if (o == null || getClass() != o.getClass()) return false;
@@ -128,5 +115,18 @@ public class SensorData {
   @Override
   public int hashCode() {
     return Objects.hash(deviceId, timestamp);
+  }
+
+  @Override
+  public String toString() {
+    return "SensorData{" +
+            "id='" + id + '\'' +
+            ", deviceId='" + deviceId + '\'' +
+            ", timestamp=" + timestamp +
+            ", temperature=" + temperature +
+            ", humidity=" + humidity +
+            ", lightStrength=" + lightStrength +
+            ", soilMoisture=" + soilMoisture +
+            '}';
   }
 }
